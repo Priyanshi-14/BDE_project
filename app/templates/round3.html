@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/project.css' %}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #FDC830;
+            background: -webkit-linear-gradient(to right, #F37335, #FDC830);
+            background: linear-gradient(to right, #F37335, #FDC830);
+             }
+    </style>
+</head>
+<body>
+    <a class="btn btn-primary" href="{% url 'dashboard' %}" >Go back to dashboard</a>
+    <form class="form" method="POST" action="{% url 'round3' project_id=project_id %}" enctype="multipart/form-data">
+        {% csrf_token %} 
+        <h2>Round 3</h2>
+        <div class="form-group">
+            <label for="date">Date:</label>
+            <div class="relative">
+                <input class="form-control" name="date" type="date" pattern="\d{2}-\d{2}-\d{4}" placeholder="Enter the date...">
+            </div>
+        </div><br>
+        <div class="form-group">
+            <label for="screenshot_shared">Screenshot Shared:</label>
+            <div class="relative">
+                <input type="file" name="Screenshot Shared" id="screenshot_upload" accept="image/*">
+            </div>
+        </div><br>
+        <div class="form-group">
+            <label for="our_review">Our Review:</label>
+            <div class="relative">
+                <textarea class="form-control" name="our_review" rows="7" cols="40" placeholder="Enter our review..."></textarea>
+            </div>
+        </div><br>
+        <div class="form-group">
+            <label for="client_review">Client Review:</label>
+            <div class="relative">
+                <textarea class="form-control" name="client_review" rows="7" cols="40"  placeholder="Enter client review..."></textarea>
+            </div>
+        </div><br>
+        <div class="tright">
+            <a href=""><button class="movebtn movebtnre" type="reset"><i class="fa fa-fw fa-refresh"></i> Reset</button></a>
+            <button class="movebtn movebtnsu" type="submit" onclick="submitForm()"><i class="fa fa-fw fa-paper-plane"></i> Submit</button>
+        </div>
+    </form>
+    <script src="{% static 'js/project.js' %}" async defer></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
